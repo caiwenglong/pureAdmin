@@ -23,6 +23,10 @@ import "element-plus/dist/index.css";
 import "./assets/iconfont/iconfont.js";
 import "./assets/iconfont/iconfont.css";
 
+// 导入plus-pro-components 及其样式
+import PlusProComponents from "plus-pro-components";
+import "plus-pro-components/index.css";
+
 const app = createApp(App);
 
 // 自定义指令
@@ -56,7 +60,12 @@ getPlatformConfig(app).then(async config => {
   app.use(router);
   await router.isReady();
   injectResponsiveStorage(app, config);
-  app.use(MotionPlugin).use(useI18n).use(useElementPlus).use(Table);
+  app
+    .use(MotionPlugin)
+    .use(useI18n)
+    .use(useElementPlus)
+    .use(PlusProComponents)
+    .use(Table);
   // .use(PureDescriptions)
   // .use(useEcharts);
   app.mount("#app");
